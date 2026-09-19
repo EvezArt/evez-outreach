@@ -1,0 +1,45 @@
+name: Workflow Audit Request
+description: Request a fixed-scope workflow audit from EVEZ
+title: "[AUDIT] "
+labels: ["commercial", "workflow-audit"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Workflow Audit is a $250 fixed-scope service. Do not post secrets, credentials, private customer data, or confidential source code here.
+  - type: input
+    id: company
+    attributes:
+      label: Company or project
+      description: Public name only.
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow to audit
+      description: Describe the process you want automated and the desired outcome.
+      placeholder: "Example: inbound support request -> classify -> create ticket -> notify team -> verify completion"
+    validations:
+      required: true
+  - type: textarea
+    id: systems
+    attributes:
+      label: Current systems
+      description: List the tools or public integration names involved. Never paste API keys.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints and verification
+      description: Budget, timing, compliance, human approval points, and what must be provably true.
+    validations:
+      required: true
+  - type: input
+    id: contact
+    attributes:
+      label: Contact method
+      description: Use a public-safe email or business contact. Do not post secrets.
+    validations:
+      required: true
