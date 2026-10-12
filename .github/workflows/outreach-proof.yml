@@ -1,0 +1,22 @@
+name: EVEZ Outreach Proof CI
+on:
+  push:
+  pull_request:
+    branches: [master]
+permissions:
+  contents: read
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Repository invariants
+        run: |
+          set -e
+          test -f README.md
+          test -f offers.md
+          find . -name '*.py' -not -path './.git/*' -print0 | xargs -0 -r -n1 python -m py_compile
+          echo "EVEZ outreach proof: PASS"
